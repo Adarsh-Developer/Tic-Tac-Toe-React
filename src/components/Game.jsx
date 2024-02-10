@@ -12,10 +12,13 @@ const Game = () => {
   const [count, setCount] = useState(0)
   const [dark, setDark] = useState(false)
 
+  const [winningBlocks, setWinningBlocks] = useState([]);
+
   let titleRef1 = useRef(null)
   let titleRef2 = useRef(null)
 
   // This are the state to make the boxes empty...
+  const box0 = useRef(null)
   const box1 = useRef(null)
   const box2 = useRef(null)
   const box3 = useRef(null)
@@ -24,9 +27,8 @@ const Game = () => {
   const box6 = useRef(null)
   const box7 = useRef(null)
   const box8 = useRef(null)
-  const box9 = useRef(null)
 
-  let boxArray = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
+  let boxArray = [box0, box1, box2, box3, box4, box5, box6, box7, box8]
 
   // This condition is creadted to show the images of cross or circle when user click on any box...
   const toggle = (e, index) => {
@@ -63,6 +65,15 @@ const Game = () => {
     for (const condition of winConditions) {
       const [a, b, c] = condition;
       if (data[a] && data[a] === data[b] && data[a] === data[c]) {
+        setTimeout(() => {
+          setWinningBlocks([a])
+        }, 0)
+        setTimeout(() => {
+          setWinningBlocks([a, b])
+        }, 150)
+        setTimeout(() => {
+          setWinningBlocks([a, b, c])
+        }, 300)
         won(data[c])
       }
     }
@@ -96,6 +107,8 @@ const Game = () => {
     titleRef1.current.innerHTML = `Tic-Tac-Toe In <span>REACT</span>`
     titleRef2.current.innerHTML = 'TIC TAC TOE'
 
+    setWinningBlocks([])
+
     // This will make all the boxes empty... 
     boxArray.forEach((e) => {
       e.current.innerHTML = ''
@@ -115,19 +128,19 @@ const Game = () => {
           <h1 className="font-bold dark:text-slate-200 text-zinc-800 text-[25px] text-center flex sm:hidden items-center duration-300" ref={titleRef2} >TIC TAC TOE</h1>
           <div className="flex flex-col gap-2">
             <div className="flex gap-2">
-              <div ref={box1} onClick={(e) => toggle(e, 0)} className="boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] dark:bg-slate-300 bg-zinc-800 rounded-md cursor-pointer flex items-center justify-center"></div>
-              <div ref={box2} onClick={(e) => toggle(e, 1)} className="boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] dark:bg-slate-300 bg-zinc-800 rounded-md cursor-pointer flex items-center justify-center"></div>
-              <div ref={box3} onClick={(e) => toggle(e, 2)} className="boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] dark:bg-slate-300 bg-zinc-800 rounded-md cursor-pointer flex items-center justify-center"></div>
+              <div ref={box0} onClick={(e) => toggle(e, 0)} className={`boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rounded-md cursor-pointer flex items-center justify-center ${winningBlocks.includes(0) ? 'border-[5px] border-zinc-900 dark:border-slate-500' : 'dark:bg-slate-300 bg-zinc-800'}`}></div>
+              <div ref={box1} onClick={(e) => toggle(e, 1)} className={`boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rounded-md cursor-pointer flex items-center justify-center ${winningBlocks.includes(1) ? 'border-[5px] border-zinc-900 dark:border-slate-500' : 'dark:bg-slate-300 bg-zinc-800'}`}></div>
+              <div ref={box2} onClick={(e) => toggle(e, 2)} className={`boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rounded-md cursor-pointer flex items-center justify-center ${winningBlocks.includes(2) ? 'border-[5px] border-zinc-900 dark:border-slate-500' : 'dark:bg-slate-300 bg-zinc-800'}`}></div>
             </div>
             <div className="flex gap-2">
-              <div ref={box4} onClick={(e) => toggle(e, 3)} className="boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] dark:bg-slate-300 bg-zinc-800 rounded-md cursor-pointer flex items-center justify-center"></div>
-              <div ref={box5} onClick={(e) => toggle(e, 4)} className="boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] dark:bg-slate-300 bg-zinc-800 rounded-md cursor-pointer flex items-center justify-center"></div>
-              <div ref={box6} onClick={(e) => toggle(e, 5)} className="boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] dark:bg-slate-300 bg-zinc-800 rounded-md cursor-pointer flex items-center justify-center"></div>
+              <div ref={box3} onClick={(e) => toggle(e, 3)} className={`boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rounded-md cursor-pointer flex items-center justify-center ${winningBlocks.includes(3) ? 'border-[5px] border-zinc-900 dark:border-slate-500' : 'dark:bg-slate-300 bg-zinc-800'}`}></div>
+              <div ref={box4} onClick={(e) => toggle(e, 4)} className={`boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rounded-md cursor-pointer flex items-center justify-center ${winningBlocks.includes(4) ? 'border-[5px] border-zinc-900 dark:border-slate-500' : 'dark:bg-slate-300 bg-zinc-800'}`}></div>
+              <div ref={box5} onClick={(e) => toggle(e, 5)} className={`boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rounded-md cursor-pointer flex items-center justify-center ${winningBlocks.includes(5) ? 'border-[5px] border-zinc-900 dark:border-slate-500' : 'dark:bg-slate-300 bg-zinc-800'}`}></div>
             </div>
             <div className="flex gap-2">
-              <div ref={box7} onClick={(e) => toggle(e, 6)} className="boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] dark:bg-slate-300 bg-zinc-800 rounded-md cursor-pointer flex items-center justify-center"></div>
-              <div ref={box8} onClick={(e) => toggle(e, 7)} className="boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] dark:bg-slate-300 bg-zinc-800 rounded-md cursor-pointer flex items-center justify-center"></div>
-              <div ref={box9} onClick={(e) => toggle(e, 8)} className="boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] dark:bg-slate-300 bg-zinc-800 rounded-md cursor-pointer flex items-center justify-center"></div>
+              <div ref={box6} onClick={(e) => toggle(e, 6)} className={`boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rounded-md cursor-pointer flex items-center justify-center ${winningBlocks.includes(6) ? 'border-[5px] border-zinc-900 dark:border-slate-500' : 'dark:bg-slate-300 bg-zinc-800'}`}></div>
+              <div ref={box7} onClick={(e) => toggle(e, 7)} className={`boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rounded-md cursor-pointer flex items-center justify-center ${winningBlocks.includes(7) ? 'border-[5px] border-zinc-900 dark:border-slate-500' : 'dark:bg-slate-300 bg-zinc-800'}`}></div>
+              <div ref={box8} onClick={(e) => toggle(e, 8)} className={`boxes duration-300 lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rounded-md cursor-pointer flex items-center justify-center ${winningBlocks.includes(8) ? 'border-[5px] border-zinc-900 dark:border-slate-500' : 'dark:bg-slate-300 bg-zinc-800'}`}></div>
             </div>
           </div>
           <button onClick={resetGame} className="dark:bg-slate-300 bg-zinc-800 text-slate-300 dark:text-zinc-800 sm:px-[35px] lg:px-[50px] px-[30px] sm:py-[15px] lg:py-[20px] py-[10px] mt-[10px] sm:text-[25px] lg:text-[35px] text-[20px] font-medium rounded-[6px] active:scale-95 duration-300 border-[2px] border-transparent hover:border-zinc-800 hover:dark:border-slate-300 hover:dark:bg-transparent hover:dark:text-slate-300 hover:bg-transparent hover:text-zinc-800" >Reset</button>
