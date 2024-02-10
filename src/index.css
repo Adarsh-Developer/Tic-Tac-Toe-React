@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.boxes img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  object-position: center;
+}
+
+h1 img {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+}
+
+h1 span {
+  color: #26FFCB;
+  margin-left: 15px;
+}
+
+.dark h1 span {
+  color: orange;
+}
+
+@media (min-width: 640px) {
+  h1 img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+  }
+  .boxes img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 img {
+    width: 55px;
+    height: 55px;
+    margin: 0 20px;
+  }
+  .boxes img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+.dark-bg {
+  background: red;
+}
