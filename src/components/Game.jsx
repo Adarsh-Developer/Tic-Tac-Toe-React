@@ -129,8 +129,8 @@ const Game = () => {
         <div className="flex flex-col gap-4 items-center">
           <h1 className="font-bold dark:bg-slate-300 bg-zinc-800 dark:text-zinc-800 text-slate-300 sm:px-[35px] lg:px-[35px] px-[15px] py-[8px] rounded-md sm:text-[30px] text-[22px] text-center flex items-center duration-300" ref={titleRef1} >TIC TAC TOE</h1>
           <div className="flex gap-10">
-            <div className={`${chance === 'X' ? 'dark:bg-slate-300 bg-zinc-800 dark:text-zinc-800 text-slate-300' : 'dark:border-slate-300 border-zinc-800 text-zinc-800 dark:text-slate-300'} ${gameWinner === 'X' ? 'bg-[#FFC226] text-[#27272A] dark:text-[#27272A]' : ''} select-none sm:px-[35px] lg:px-[35px] px-[30px] sm:py-[15px] lg:py-[8px] py-[10px] sm:text-[25px] lg:text-[35px] text-[20px] font-medium rounded-tr-[30px] rounded-bl-[30px] duration-300 border-[4px] border-transparent`} >Cross</div>
-            <div className={`${chance === 'O' ? 'dark:bg-slate-300 bg-zinc-800 dark:text-zinc-800 text-slate-300' : 'dark:border-slate-300 border-zinc-800 text-zinc-800 dark:text-slate-300'} ${gameWinner === 'O' ? 'bg-[#26FFCB] text-[#27272A] dark:text-[#27272A]' : ''} select-none sm:px-[35px] lg:px-[35px] px-[30px] sm:py-[15px] lg:py-[8px] py-[10px] sm:text-[25px] lg:text-[35px] text-[20px] font-medium rounded-tl-[30px] rounded-br-[30px] duration-300 border-[4px] border-transparent`} >Circle</div>
+            <div className={`${chance === 'X' ? 'dark:bg-slate-300 bg-zinc-800 dark:text-zinc-800 text-slate-300' : 'dark:border-slate-300 border-zinc-800 text-zinc-800 dark:text-slate-300'} ${gameWinner === 'X' ? 'bg-[#FFC226] text-[#27272A] dark:text-[#27272A]' : ''} select-none px-[30px] py-[10px] sm:text-[25px] sm:py-[10px] text-[20px] font-medium rounded-tr-[30px] rounded-bl-[30px] duration-300 border-[4px] border-transparent`} >Cross</div>
+            <div className={`${chance === 'O' ? 'dark:bg-slate-300 bg-zinc-800 dark:text-zinc-800 text-slate-300' : 'dark:border-slate-300 border-zinc-800 text-zinc-800 dark:text-slate-300'} ${gameWinner === 'O' ? 'bg-[#26FFCB] text-[#27272A] dark:text-[#27272A]' : ''} select-none px-[30px] py-[10px] sm:text-[25px] sm:py-[10px] text-[20px] font-medium rounded-tl-[30px] rounded-br-[30px] duration-300 border-[4px] border-transparent`} >Circle</div>
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex gap-2">
@@ -149,7 +149,7 @@ const Game = () => {
               <div ref={box8} onClick={(e) => toggle(e, 8)} className={`boxes duration-300 lg:w-[150px] lg:h-[150px] sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rounded-md cursor-pointer flex items-center justify-center ${winningBlocks.includes(8) ? 'border-[5px] border-zinc-800 dark:border-slate-300' : 'dark:bg-slate-300 bg-zinc-800'}`}></div>
             </div>
           </div>
-          <button onClick={resetGame} className="dark:bg-slate-300 bg-zinc-800 text-slate-300 dark:text-zinc-800 sm:px-[35px] lg:px-[35px] px-[30px] sm:py-[15px] lg:py-[8px] py-[10px] mt-[10px] sm:text-[25px] lg:text-[35px] text-[20px] font-medium rounded-[6px] active:scale-95 duration-300 border-[2px] border-transparent hover:border-zinc-800 hover:dark:border-slate-300 hover:dark:bg-transparent hover:dark:text-slate-300 hover:bg-transparent hover:text-zinc-800" >Reset</button>
+          <button onClick={resetGame} className="dark:bg-slate-300 bg-zinc-800 text-slate-300 dark:text-zinc-800 sm:px-[40px] px-[30px] sm:py-[15px] py-[10px] mt-[10px] sm:text-[25px] text-[20px] font-medium rounded-[6px] active:scale-95 duration-300 border-[2px] border-transparent hover:border-zinc-800 hover:dark:border-slate-300 hover:dark:bg-transparent hover:dark:text-slate-300 hover:bg-transparent hover:text-zinc-800" >Reset</button>
         </div>
       </div>
     </div>
