@@ -87,12 +87,11 @@ const Game = () => {
           setWinningBlocks([a, b, c])
         }, 200)
         won(data[c])
+        return ;
+      } else if (count === 8) {
+        won('Tie')
+        setWinningBlocks([0, 1, 2, 3, 4, 5, 6, 7, 8])
       }
-    }
-
-    if (count === 8) {
-      won('Tie')
-      setWinningBlocks([0, 1, 2, 3, 4, 5, 6, 7, 8])
     }
   }
 
@@ -100,16 +99,16 @@ const Game = () => {
   const won = (winnerName) => {
     setIsGamePlay(false)
     setCount(0)
-    if (winnerName === 'Tie') {
-      titleRef1.current.innerHTML = `Game Over! - Its a tie.`
-    } else if (winnerName === "X") {
+    if (winnerName === "X") {
       titleRef1.current.innerHTML = `Congratulations : <img src=${Cross} alt='Cross' /> Wins`
       setGameWinner('X')
       setChance(null)
-    } else {
+    } else if (winnerName === 'O') {
       titleRef1.current.innerHTML = `Congratulations : <img src=${Circle} alt='Cross' /> Wins`
       setGameWinner('O')
       setChance(null)
+    } else {
+      titleRef1.current.innerHTML = `Game Over! - Its a tie.`
     }
     winSound.volume = 0.5
     winSound.currentTime = 0
