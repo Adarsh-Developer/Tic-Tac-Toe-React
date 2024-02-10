@@ -2,9 +2,14 @@ import { useRef, useState } from "react"
 import Cross from '../assets/cross.png';
 import Circle from '../assets/circle.png';
 import Navbar from "./Navbar/Navbar";
+import winSoundFile from "../audio/gameWin.wav"
+import tapSoundFile from "../audio/tapSound.wav"
 
 // This is an array which stores the data of each box...
 let data = ["", "", "", "", "", "", "", "", ""]
+
+const winSound = new Audio(winSoundFile)
+const tapSound = new Audio(tapSoundFile)
 
 const Game = () => {
 
@@ -49,6 +54,8 @@ const Game = () => {
         setChance('X')
       }
     }
+    tapSound.currentTime = 0
+    tapSound.play()
     checkWin()
   }
 
@@ -83,6 +90,7 @@ const Game = () => {
 
     if (count === 8) {
       won('Tie')
+      setWinningBlocks([0, 1, 2, 3, 4, 5, 6, 7, 8])
     }
   }
 
@@ -101,6 +109,9 @@ const Game = () => {
       setGameWinner('O')
       setChance(null)
     }
+    winSound.volume = 0.5
+    winSound.currentTime = 0
+    winSound.play()
   }
 
   // Reset button functionality...
