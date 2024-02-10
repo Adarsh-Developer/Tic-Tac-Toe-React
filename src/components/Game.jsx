@@ -9,7 +9,9 @@ import tapSoundFile from "../audio/tapSound.wav"
 let data = ["", "", "", "", "", "", "", "", ""]
 
 const winSound = new Audio(winSoundFile)
+winSound.currentTime = 0
 const tapSound = new Audio(tapSoundFile)
+tapSound.currentTime = 0
 
 const Game = () => {
 
