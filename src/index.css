@@ -39,3 +39,19 @@ h1 span {
     object-position: center;
   }
 }
+
+.animateBox {
+  animation: scaleIn 0.2s ease
+}
+
+@keyframes scaleIn {
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.05);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
