@@ -109,7 +109,7 @@ const Game = () => {
   return (
     <div className={dark ? 'dark' : ''}>
       <Navbar toggleMode={toggleMode} />
-      <div className="w-full max-h-screen min-h-screen flex items-center justify-center dark:bg-zinc-800 bg-slate-400 font-poppins duration-300">
+      <div className="w-full h-screen flex items-center justify-center dark:bg-zinc-800 bg-slate-400 font-poppins duration-300">
         <div className="flex flex-col gap-4 items-center">
           <h1 className="font-bold dark:text-slate-200 text-zinc-800 lg:text-[70px] sm:text-[40px] text-center hidden sm:flex items-center duration-300" ref={titleRef1} >Tic-Tac-Toe In <span className="ml-[15px]" >REACT</span></h1>
           <h1 className="font-bold dark:text-slate-200 text-zinc-800 text-[25px] text-center flex sm:hidden items-center duration-300" ref={titleRef2} >TIC TAC TOE</h1>
